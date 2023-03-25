@@ -1,5 +1,4 @@
 version: "3.1"
-
 nlu:
 - intent: greet
   examples: |
@@ -16,7 +15,6 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
 - intent: goodbye
   examples: |
     - cu
@@ -29,7 +27,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: affirm
   examples: |
     - yes
@@ -38,7 +35,6 @@ nlu:
     - of course
     - that sounds good
     - correct
-
 - intent: deny
   examples: |
     - no
@@ -48,7 +44,6 @@ nlu:
     - don't like that
     - no way
     - not really
-
 - intent: mood_great
   examples: |
     - perfect
@@ -65,7 +60,6 @@ nlu:
     - so so perfect
     - so good
     - so perfect
-
 - intent: mood_unhappy
   examples: |
     - my day was horrible
@@ -82,32 +76,32 @@ nlu:
     - extremly sad
     - so saad
     - so sad
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
+- intent: find_recipe
+  examples: |
+    - Can you help me find a recipe?
+    - I need a recipe
+    - Can you find me a meal
 - intent: give_ingredients
   examples: |
     - i have [avocados](ingredient), [cheese](ingredients), [tomatoes](ingredient) and [bread](ingredient)
     - [avocados](ingredient), [cheese](ingredients), [tomatoes](ingredient), [bread](ingredient)
-
 - intent: give_dietary_type
   examples: |
     - [no](dietary_type)
     - i'm a [vegetarian](dietary_type)
     - i follow a [vegan](dietary_type) diet
     - give me [vegetarian](dietary_type) recipes
-
 - intent: give_cook_time
   examples: |
     - i have [15 min](cook_time)
     - i want to cook for [1 hour](cook_time)
     - give me recipes i can make in [30 min](cook_time)
-
 - intent: stop
   examples: |
     - stop

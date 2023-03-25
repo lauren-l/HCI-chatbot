@@ -14,6 +14,7 @@ intents:
 - mood_great
 - mood_unhappy
 - bot_challenge
+- find_recipe
 entities:
 - ingredients
 - cook_time
@@ -42,7 +43,7 @@ slots:
     type: text
     influence_conversation: false
     mappings:
-    - type: from entity
+    - type: from_entity
       entity: recipe
 forms:
   recipe_form:
@@ -74,8 +75,7 @@ responses:
   - text: Do you have any dietary restrictions?
   utter_ask_pizza_type:
   - text: How much time do you have to cook?
-  utter_recipe:
-  - text: Here's the recipe {recipe}
+
 
 actions:
 - utter_ask_continue
@@ -84,3 +84,4 @@ actions:
 - utter_recipe
 - utter_submit
 - validate_recipe_form
+- action_recipe_search

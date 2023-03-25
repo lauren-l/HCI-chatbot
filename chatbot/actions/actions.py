@@ -2,6 +2,7 @@
 # custom Python code.
 #
 from typing import Text, List, Any, Dict
+from py_edamam import Edamam
 
 from rasa_sdk import Tracker, FormValidationAction, Action
 from rasa_sdk.events import EventType
@@ -63,3 +64,40 @@ class ValidateSimplePizzaForm(FormValidationAction):
         else:
             dispatcher.utter_message(text=f"OK! You are a {slot_value}.")
         return {"dietary_type": slot_value}
+
+class ActionRecipeSearch(Action):
+    def name(self) -> Text:
+        return "action_recipe_search"
+    
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+		domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        """Search for recipe with matching criteria"""
+
+        e = Edamam(recipes_appid="bf39108a", recipes_appkey='411d5b6d03551c704f48d3431162d55e')
+        
+        # get inputted ingredients + diet info from tracker
+        ingredients = tracker.get_slot('ingredients')
+        diet = tracker.get_slot('dietary_type')
+
+        message = "Try these recipes:\n" # message for bot to utter
+        
+        # form query
+        query = diet + " " + ingredients
+
+        # query Edamam API
+        query_result = e.search_recipe(query)
+        if query_result == None:
+            dispatcher.utter_message(text = "I couldn't find any recipes with the given criteria")
+        else:
+            for i, recipe in enumerate(query_result):
+                message += f"Recipe {i}: {recipe.label}\t link: {recipe.url}\n"
+                if i == 5:
+                    break
+    
+        dispatcher.utter_message(text = message)
+        
+        return []

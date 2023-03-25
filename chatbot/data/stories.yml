@@ -33,6 +33,7 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
+  - intent: find_recipe
   - action: recipe_form
   - active_loop: recipe_form
   - slot_was_set:
@@ -57,7 +58,7 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: utter_submit
-  - action: utter_recipe
+  - action: action_recipe_search
   - intent: goodbye
   - action: utter_goodbye
 
@@ -65,6 +66,7 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
+  - intent: find_recipe
   - action: recipe_form
   - active_loop: recipe_form
   - intent: stop
@@ -79,6 +81,7 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
+  - intent: find_recipe
   - action: recipe_form
   - active_loop: recipe_form
   - slot_was_set:
@@ -86,30 +89,6 @@ stories:
   - intent: stop
   - action: utter_ask_continue
   - intent: stop
-  - action: action_deactivate_loop
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
-  - intent: goodbye
-  - action: utter_goodbye
-
-- story: interactive_story_1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - action: recipe_form
-  - active_loop: recipe_form
-  - slot_was_set:
-    - requested_slot: ingredients
-  - slot_was_set:
-    - ingredients: ####ADD USER INPUTTED INGREDIENTS HERE####
-  - slot_was_set:
-    - ingredients: ####ADD ACCEPTED INGREDIENTS HERE####
-  - slot_was_set:
-    - requested_slot: dietary_type
-  - intent: stop
-  - action: utter_ask_continue
-  - intent: affirm
   - action: action_deactivate_loop
   - active_loop: null
   - slot_was_set:

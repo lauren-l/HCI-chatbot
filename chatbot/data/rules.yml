@@ -34,4 +34,4 @@ rules:
   - slot_was_set:
     - requested_slot: null
   - action: utter_submit
-  - action: utter_recipe
+  - action: action_recipe_search
