@@ -48,8 +48,8 @@ forms:
   recipe_form:
     required_slots:
       - ingredients
-      - pizza_size
-      - pizza_type
+      - dietary_type
+      - cook_time
 responses:
   utter_greet:
   - text: Hey! How are you?
@@ -75,9 +75,9 @@ responses:
   utter_ask_pizza_type:
   - text: How much time do you have to cook?
   utter_recipe:
-    - text: "Here's the recipe: {recipe}"
+  - text: Here's the recipe {recipe}
 
-  actions:
+actions:
 - utter_ask_continue
 - utter_goodbye
 - utter_greet

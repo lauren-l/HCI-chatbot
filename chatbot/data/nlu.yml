@@ -107,3 +107,11 @@ nlu:
     - i have [15 min](cook_time)
     - i want to cook for [1 hour](cook_time)
     - give me recipes i can make in [30 min](cook_time)
+
+- intent: stop
+  examples: |
+    - stop
+    - nevermind
+    - please stop
+    - i want to stop
+    - stop the form
