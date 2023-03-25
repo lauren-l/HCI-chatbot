@@ -42,7 +42,7 @@ slots:
     type: text
     influence_conversation: false
     mappings:
-    - type: from entity
+    - type: from_entity
       entity: recipe
 forms:
   recipe_form:
