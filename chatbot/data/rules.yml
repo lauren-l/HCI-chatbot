@@ -12,7 +12,7 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-- rule: Interruption in Pizza Form
+- rule: Interruption in Recipe Form
   condition:
   # Condition that form is active.
   - active_loop: recipe_form

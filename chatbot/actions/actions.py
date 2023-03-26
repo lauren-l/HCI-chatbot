@@ -9,7 +9,6 @@ from rasa_sdk.events import EventType
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 
-ALLOWED_INGREDIENTS = []
 ALLOWED_COOK_TIMES = ["15", "15 min", "15 minutes", "30", "30 min", "30 minutes", "1", "1 hr", "1 hour", ">1", ">1 hr", ">1hr", "> 1hr", "> 1 hr", ">1 hour", ">1hour", "> 1hour", "> 1 hour", "more than an hour", "more than 1 hour", "2hr", "2hrs", "2 hrs", "2 hours"]
 ALLOWED_DIETARY_TYPES = ["vegetarian", "vegan", "non-vegetarian", "non-vegan", "meat eater", "no"]
 
@@ -25,12 +24,8 @@ class ValidateSimplePizzaForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, List]:
         """Validate `ingredients` value."""
-
-        if slot_value.lower() not in ALLOWED_INGREDIENTS:
-            dispatcher.utter_message(text=f"Sorry some of the ingredients are not supported. These are the possible inputs: {'/'.join(ALLOWED_COOK_TIMES)}")
-            return {"ingredients": None}
-        dispatcher.utter_message(text=f"OK! These are the ingredients you have: {slot_value}")
-        return {"ingredients": slot_value}
+        dispatcher.utter_message(text=f"OK! These are the ingredients you have: {''.join(slot_value)}")
+        return {"ingredients": ''.join(slot_value)}
 
     def validate_cook_times(
         self,

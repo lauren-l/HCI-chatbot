@@ -87,10 +87,12 @@ nlu:
     - Can you help me find a recipe?
     - I need a recipe
     - Can you find me a meal
+    - I want a recipe
 - intent: give_ingredients
   examples: |
-    - i have [avocados](ingredient), [cheese](ingredients), [tomatoes](ingredient) and [bread](ingredient)
-    - [avocados](ingredient), [cheese](ingredients), [tomatoes](ingredient), [bread](ingredient)
+    - i have [avocados](ingredients), [cheese](ingredients), [tomatoes](ingredients) and [bread](ingredients)
+    - [avocados](ingredients), [cheese](ingredients), [tomatoes](ingredients), [bread](ingredients)
+    - [avocados](ingredients) [cheese](ingredients) [tomatoes](ingredients) [bread](ingredients)
 - intent: give_dietary_type
   examples: |
     - [no](dietary_type)

@@ -1,0 +1,36 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-cook_time",
+      "2": "I-cook_time",
+      "3": "L-cook_time",
+      "4": "U-cook_time",
+      "5": "B-dietary_type",
+      "6": "I-dietary_type",
+      "7": "L-dietary_type",
+      "8": "U-dietary_type",
+      "9": "B-ingredients",
+      "10": "I-ingredients",
+      "11": "L-ingredients",
+      "12": "U-ingredients",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-cook_time": 1,
+      "I-cook_time": 2,
+      "L-cook_time": 3,
+      "U-cook_time": 4,
+      "B-dietary_type": 5,
+      "I-dietary_type": 6,
+      "L-dietary_type": 7,
+      "U-dietary_type": 8,
+      "B-ingredients": 9,
+      "I-ingredients": 10,
+      "L-ingredients": 11,
+      "U-ingredients": 12,
+      "O": 0
+    },
+    "num_tags": 13
+  }
+]

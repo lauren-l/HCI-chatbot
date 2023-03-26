@@ -36,7 +36,7 @@ stories:
   - intent: find_recipe
   - action: recipe_form
   - active_loop: recipe_form
-  - slot_was_set:
+  - slot_was_set: 
     - requested_slot: ingredients
   - slot_was_set:
     - ingredients: "Avocados, cheese, tomato and bread"

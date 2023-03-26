@@ -39,12 +39,6 @@ slots:
     mappings:
     - type: from_entity
       entity: dietary_type
-  recipe:
-    type: text
-    influence_conversation: false
-    mappings:
-    - type: from_entity
-      entity: recipe
 forms:
   recipe_form:
     required_slots:
@@ -71,9 +65,9 @@ responses:
   - text: Are you sure you want to stop the form?
   utter_ask_ingredients:
   - text: What ingredients do you have?
-  utter_ask_pizza_size:
+  utter_ask_dietary_type:
   - text: Do you have any dietary restrictions?
-  utter_ask_pizza_type:
+  utter_ask_cook_time:
   - text: How much time do you have to cook?
 
 
