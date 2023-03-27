@@ -1,0 +1,18 @@
+marker_start_end_recipe_form:
+  seq:
+    - intent: find_recipe
+    - action: utter_submit
+
+marker_ingredients_not_set_immediately:
+  seq:
+    - intent: find_recipe
+    - not:
+      - slot_was_set: ingredients
+    - slot_was_set: ingredients
+
+marker_diet_type_not_set_immediately:
+  seq:
+    - intent: find_recipe
+    - not:
+      - slot_was_set: diet_type
+    - slot_was_set: diet_type

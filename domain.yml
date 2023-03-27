@@ -1,0 +1,69 @@
+version: '3.1'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- affirm
+- bot_challenge
+- deny
+- find_recipe
+- goodbye
+- greet
+- inform
+- mood_great
+- mood_unhappy
+- request_recipe_form
+- stop
+entities:
+- ingredients
+- diet_type
+slots:
+  ingredients:
+    type: list
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: ingredients
+  diet_type:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: diet_type
+forms:
+  recipe_form:
+    required_slots:
+    - ingredients
+    - diet_type
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_submit:
+  - text: I will now find recipes for you!
+  utter_recipe_slots:
+  - text: Ok, you are a {diet_type} and have these ingredients- {ingredients}.
+  utter_ask_continue:
+  - text: Are you sure you want to stop the form?
+  utter_ask_ingredients:
+  - text: What ingredients do you have?
+  utter_ask_diet_type:
+  - text: What diet do you follow?
+actions:
+- utter_greet
+- utter_submit
+- action_recipe_search
+- utter_goodbye
+- utter_recipe_slots
+- utter_ask_continue
+- validate_recipe_form

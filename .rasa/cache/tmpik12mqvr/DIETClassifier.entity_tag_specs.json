@@ -1,0 +1,28 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-diet_type",
+      "2": "I-diet_type",
+      "3": "L-diet_type",
+      "4": "U-diet_type",
+      "5": "B-ingredients",
+      "6": "I-ingredients",
+      "7": "L-ingredients",
+      "8": "U-ingredients",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-diet_type": 1,
+      "I-diet_type": 2,
+      "L-diet_type": 3,
+      "U-diet_type": 4,
+      "B-ingredients": 5,
+      "I-ingredients": 6,
+      "L-ingredients": 7,
+      "U-ingredients": 8,
+      "O": 0
+    },
+    "num_tags": 9
+  }
+]
