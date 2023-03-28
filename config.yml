@@ -11,6 +11,7 @@ pipeline:
   max_ngram: 4
 - name: DIETClassifier
   epochs: 100
+  entity_recognition: False
   constrain_similarities: true
   model_confidence: softmax
 policies:

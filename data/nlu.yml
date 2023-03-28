@@ -125,4 +125,7 @@ nlu:
     - I have [potatoes](ingredients) and [peas](ingredients)
     - I follow a [keto](diet_type) diet
     - I have [pork](ingredients) and [curry](ingredients)
-    - I follow [no](diet_type) diet
+    - I have [tofu](ingredients) and [carrots](ingredients)
+    - I have chickpeas and [bread](ingredients)
+    - I have [peaches](ingredients) and [pears](ingredients)
+    - I am a [vegetarian](diet_type)

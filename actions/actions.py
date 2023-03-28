@@ -22,7 +22,6 @@ class ValidateRecipeaForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate `ingredients` value."""
 
-
         dispatcher.utter_message(text=f"OK! You have these ingredients: {', '.join(slot_value)}")
         return {"ingredients": slot_value}
 
@@ -81,6 +80,34 @@ class ActionRecipeSearch(Action):
                 message += f"Recipe {i+1}: {recipe['recipe']['label']}\n\tlink: {recipe['recipe']['url']}\n"
                 if i == 5:
                     break
+    
+        dispatcher.utter_message(text = message)
+        
+        return []
+
+
+class ActionUtterRecipeSlots(Action):
+    def name(self) -> Text:
+        return "action_utter_recipe_slots"
+    
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+		domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        """Confirm diet and ingredient slots"""
+        
+        # get inputted ingredients + diet info from tracker
+        ingredients = tracker.get_slot("ingredients")
+        diet = tracker.get_slot("diet_type")
+        
+        # form query
+        if diet == "no":
+            message = "Ok, you follow no specific diet and have these ingredients: " + ", ".join(ingredients)
+        else:
+            message = f"Ok, so you follow a {diet} diet and have these ingredients: " + ", ".join(ingredients)
+
     
         dispatcher.utter_message(text = message)
         

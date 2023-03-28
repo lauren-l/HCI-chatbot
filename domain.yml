@@ -15,8 +15,8 @@ intents:
 - request_recipe_form
 - stop
 entities:
-- ingredients
 - diet_type
+- ingredients
 slots:
   ingredients:
     type: list
@@ -51,8 +51,6 @@ responses:
   - text: I am a bot named Remy, powered by Rasa.
   utter_submit:
   - text: I will now find recipes for you!
-  utter_recipe_slots:
-  - text: Ok, you are a {diet_type} and have {ingredients}.
   utter_ask_continue:
   - text: Are you sure you want to stop the form?
   utter_ask_ingredients:
@@ -60,10 +58,10 @@ responses:
   utter_ask_diet_type:
   - text: What diet do you follow?
 actions:
-- utter_submit
-- utter_goodbye
-- utter_greet
 - action_recipe_search
-- utter_recipe_slots
+- utter_goodbye
+- utter_submit
+- action_utter_recipe_slots
+- utter_greet
 - utter_ask_continue
 - validate_recipe_form
