@@ -48,7 +48,7 @@ responses:
   utter_goodbye:
   - text: Bye
   utter_iamabot:
-  - text: I am a bot, powered by Rasa.
+  - text: I am a bot named Remy, powered by Rasa.
   utter_submit:
   - text: I will now find recipes for you!
   utter_recipe_slots:
