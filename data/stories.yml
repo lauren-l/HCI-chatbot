@@ -64,7 +64,7 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: utter_submit
-  - action: utter_recipe_slots
+  - action: action_utter_recipe_slots
   - action: action_recipe_search
   - intent: goodbye
   - action: utter_goodbye
@@ -155,7 +155,7 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: utter_submit
-  - action: utter_recipe_slots
+  - action: action_utter_recipe_slots
   - action: action_recipe_search
   - intent: goodbye
   - action: utter_goodbye
@@ -187,7 +187,7 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: utter_submit
-  - action: utter_recipe_slots
+  - action: action_utter_recipe_slots
   - action: action_recipe_search
   - intent: goodbye
   - action: utter_goodbye
@@ -219,7 +219,7 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: utter_submit
-  - action: utter_recipe_slots
+  - action: action_utter_recipe_slots
   - action: action_recipe_search
   - intent: goodbye
   - action: utter_goodbye
@@ -251,7 +251,65 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: utter_submit
-  - action: utter_recipe_slots
+  - action: action_utter_recipe_slots
+  - action: action_recipe_search
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: find_recipe
+  - action: recipe_form
+  - active_loop: recipe_form
+  - slot_was_set:
+    - requested_slot: ingredients
+  - slot_was_set:
+    - ingredients:
+      - tofu
+      - carrots
+  - slot_was_set:
+    - diet_type: no
+  - slot_was_set:
+    - diet_type: no
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_submit
+  - action: action_utter_recipe_slots
+  - action: action_recipe_search
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: find_recipe
+  - action: recipe_form
+  - active_loop: recipe_form
+  - slot_was_set:
+    - requested_slot: ingredients
+  - slot_was_set:
+    - ingredients:
+      - peaches
+      - pears
+  - slot_was_set:
+    - ingredients:
+      - peaches
+      - pears
+  - slot_was_set:
+    - requested_slot: diet_type
+  - slot_was_set:
+    - diet_type: vegetarian
+  - slot_was_set:
+    - diet_type: vegetarian
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_submit
+  - action: action_utter_recipe_slots
   - action: action_recipe_search
   - intent: goodbye
   - action: utter_goodbye

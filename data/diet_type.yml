@@ -1,0 +1,20 @@
+version: "3.1"
+nlu:
+  - lookup: diet_type
+    examples: |
+      - no
+      - alcohol-free
+      - balanced
+      - high-fiber
+      - high-protein
+      - keto
+      - kosher
+      - low-carb
+      - low-fat
+      - low-sodium
+      - no-sugar
+      - paleo
+      - pescatarian
+      - pork-free
+      - vegan
+      - vegetarian

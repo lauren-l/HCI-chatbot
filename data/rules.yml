@@ -27,7 +27,7 @@ rules:
   - slot_was_set:
     - requested_slot: null
   - action: utter_submit
-  - action: utter_recipe_slots
+  - action: action_utter_recipe_slots
   - action: action_recipe_search
 
 - rule: Interruption in Recipe Form
