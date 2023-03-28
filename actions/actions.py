@@ -7,7 +7,7 @@ from rasa_sdk.types import DomainDict
 
 from py_edamam import Edamam
 
-ALLOWED_DIET_TYPES = ["vegetarian", "pescatarian", "vegan", "dairy free", "nut free"]
+ALLOWED_DIET_TYPES = ["no", "alcohol-free", "balanced", "high-fiber", "high-protein", "keto", "kosher", "low-carb", "low-fat", "low-sodium", "no-sugar", "paleo", "pescatarian", "pork-free", "vegan", "vegetarian"]
 
 class ValidateRecipeaForm(FormValidationAction):
     def name(self) -> Text:
@@ -35,11 +35,16 @@ class ValidateRecipeaForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate `diet_type` value."""
 
-        if slot_value not in ALLOWED_DIET_TYPES:
+        diet = str(slot_value).lower()
+
+        if diet not in ALLOWED_DIET_TYPES:
             dispatcher.utter_message(text=f"I don't recognize that diet. We serve {'/'.join(ALLOWED_DIET_TYPES)}.")
             return {"diet_type": None}
-        dispatcher.utter_message(text=f"OK! You follow a {slot_value} diet.")
-        return {"diet_type": slot_value}
+        elif diet == "no":
+            dispatcher.utter_message(text=f"OK! You do not follow a specific diet.")
+            return {"diet_type": diet}
+        dispatcher.utter_message(text=f"OK! You follow a {diet} diet.")
+        return {"diet_type": diet}
 
 class ActionRecipeSearch(Action):
     def name(self) -> Text:
@@ -62,13 +67,10 @@ class ActionRecipeSearch(Action):
         message = "Try these recipes:\n" # message for bot to utter
         
         # form query
-        # try:
-        query = diet + " " + " ".join(ingredients)
-        # except TypeError:
-        #     print(type(ingredients))
-        #     print(ingredients)
-        # finally:
-        #     query = "vegetarian tomatoes cheese"
+        if diet == "no":
+            query = " ".join(ingredients)
+        else:
+            query = diet + " " + " ".join(ingredients)
 
         # query Edamam API
         query_result = e.search_recipe(query)['hits']
@@ -76,7 +78,7 @@ class ActionRecipeSearch(Action):
             dispatcher.utter_message(text = "I couldn't find any recipes with the given criteria")
         else:
             for i, recipe in enumerate(query_result):
-                message += f"Recipe {i+1}: {recipe['recipe']['label']}\t link: {recipe['recipe']['url']}\n"
+                message += f"Recipe {i+1}: {recipe['recipe']['label']}\n\tlink: {recipe['recipe']['url']}\n"
                 if i == 5:
                     break
     

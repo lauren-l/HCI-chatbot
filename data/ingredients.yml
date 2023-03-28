@@ -1,0 +1,497 @@
+version: "3.1"
+nlu:
+  - lookup: ingredients
+    examples: |
+      - aroma
+      - avocados
+      - bagel
+      - batter
+      - beans
+      - beer
+      - biscuit
+      - bread
+      - broth
+      - burger
+      - burrito
+      - butter
+      - cake
+      - candy
+      - caramel
+      - caviar
+      - cheese
+      - chili
+      - chimichanga
+      - chocolate
+      - cider
+      - cobbler
+      - cocoa
+      - coffee
+      - cookie
+      - cream
+      - croissant
+      - crumble
+      - cuisine
+      - curd
+      - dessert
+      - dish
+      - drink
+      - eggs
+      - empanada
+      - enchilada
+      - entree
+      - filet
+      - fish
+      - flour
+      - foie gras
+      - food
+      - glaze
+      - grill
+      - hamburger
+      - ice
+      - juice
+      - ketchup
+      - kitchen
+      - lard
+      - liquor
+      - margarine
+      - marinade
+      - mayo
+      - mayonnaise
+      - meat
+      - milk
+      - mousse
+      - muffin
+      - mushroom
+      - noodle
+      - nut
+      - oil
+      - olive
+      - omelette
+      - pan
+      - pasta
+      - paste
+      - pastry
+      - pie
+      - pizza
+      - plate
+      - pot
+      - poutine
+      - pudding
+      - queso
+      - raclette
+      - rice
+      - salad
+      - salsa
+      - sandwich
+      - sauce
+      - seasoning
+      - skillet
+      - soda
+      - sopapillas
+      - soup
+      - soy
+      - spice
+      - steak
+      - stew
+      - syrup
+      - taco
+      - taquito
+      - tartar
+      - taste
+      - tea
+      - toast
+      - tostada
+      - vinegar
+      - waffle
+      - water
+      - wheat
+      - wine
+      - wok
+      - yeast
+      - yogurt
+      - asadero
+      - asiago
+      - blue
+      - brick
+      - brie
+      - burrata
+      - butterkase
+      - camembert
+      - cheddar
+      - colby
+      - cotija
+      - edam
+      - emmentaler
+      - feta
+      - fontina
+      - gorgonzola
+      - gouda
+      - havarti
+      - kasseri
+      - limburger
+      - mascarpone
+      - mozzarella
+      - muenster
+      - parmesan
+      - pepato
+      - provolone
+      - ricotta
+      - romano
+      - swiss
+      - butter
+      - chili
+      - chives
+      - chutney
+      - garlic
+      - honey
+      - horseradish
+      - ketchup
+      - margarine
+      - mayonnaise
+      - miso
+      - mustard
+      - oil
+      - onion
+      - pesto
+      - relish
+      - remoulade
+      - salsa
+      - sauerkraut
+      - sriracha
+      - vinegar
+      - wasabi
+      - apple
+      - apricot
+      - avocado
+      - banana
+      - berry
+      - cantaloupe
+      - cherry
+      - citron
+      - citrus
+      - coconut
+      - date
+      - fig
+      - grape
+      - guava
+      - kiwi
+      - lemon
+      - lime
+      - mango
+      - melon
+      - mulberry
+      - nectarine
+      - orange
+      - papaya
+      - peach
+      - pear
+      - pineapple
+      - plum
+      - prune
+      - raisin
+      - raspberry
+      - tangerine
+      - alligator
+      - beef
+      - bison
+      - buffalo
+      - caribou
+      - chicken
+      - duck
+      - elk
+      - goat
+      - lamb
+      - pheasant
+      - pork
+      - quail
+      - rabbit
+      - turkey
+      - veal
+      - venison
+      - yak
+      - arrowroot
+      - basil
+      - bay
+      - cayenne
+      - cilantro
+      - cinnamon
+      - coriander
+      - cumin
+      - curry
+      - dill
+      - fennel
+      - ginger
+      - lemon
+      - mace
+      - mint
+      - nutmeg
+      - oregano
+      - paprika
+      - parsley
+      - pepper
+      - rosemary
+      - sage
+      - salt
+      - sesame
+      - soda
+      - sugar
+      - tarragon
+      - thyme
+      - turmeric
+      - bread
+      - peppercorns
+      - parma ham
+      - apples
+      - sage
+      - chicken thigh
+      - spelt
+      - cornichons
+      - tomato puree
+      - kaffir lime leaves
+      - fennel
+      - almonds
+      - sweet potato
+      - nutmeg
+      - tortilla crisps
+      - chipotle chilli
+      - mascarpone
+      - olive oil
+      - shichimi
+      - rice noodles
+      - quinoa
+      - tomatoes
+      - brioche
+      - cod
+      - carrot
+      - english mustard
+      - mixed wild mushrooms
+      - beans
+      - miso soup
+      - ground cloves
+      - asparagus
+      - cashew
+      - beef
+      - oregano
+      - pork steaks
+      - pumpkin purée
+      - pittas
+      - big sausages
+      - pancetta
+      - baguettes
+      - dark soy sauce
+      - linguine
+      - tofu
+      - sour cream
+      - white wine vinegar
+      - alpro
+      - curry powder
+      - pine nuts
+      - crab
+      - cabbage
+      - pesto
+      - manchego
+      - rolls
+      - balsamic
+      - gnocchi
+      - broccoli
+      - raspberries
+      - miso
+      - celery
+      - sriracha
+      - tahini
+      - lemongrass
+      - pomegranate
+      - jalapeños
+      - vegetable stock
+      - margarine
+      - king prawns
+      - walnuts
+      - caster sugar
+      - sweetcorn
+      - rice
+      - cheese
+      - ginger
+      - turkey
+      - halloumi
+      - chorizo
+      - goose fat
+      - cucumber
+      - wine
+      - couscous
+      - lard
+      - lettuce
+      - mozzarella
+      - cheddar
+      - peas
+      - breadcrumbs
+      - flour
+      - shellfish
+      - cinnamon
+      - salt
+      - salsa
+      - seaweed
+      - yogurt
+      - onion chutney
+      - creme fraiche
+      - buttermilk
+      - clams
+      - parsley
+      - spaghetti
+      - chicken
+      - goats cheese
+      - shallots
+      - tamarind paste
+      - star anise
+      - carrots
+      - cauliflower
+      - beef
+      - lemon
+      - chilli
+      - brussel sprouts
+      - bloody mary mix
+      - mint
+      - honey
+      - leeks
+      - cardamom
+      - courgette
+      - sushi rice
+      - pumpkins
+      - sweet chilli sauce
+      - honey
+      - monkfish
+      - eggs
+      - rosemary
+      - black sesame seeds
+      - honey
+      - hummus
+      - cornflakes
+      - sesame oil
+      - focaccia
+      - bacon
+      - oats
+      - feta
+      - ketchup
+      - rack ribs
+      - avocados
+      - dark chocolate
+      - vodka
+      - ginger
+      - egg
+      - tofu
+      - petit pois
+      - rigatoni
+      - squids
+      - chives
+      - rocket
+      - saffron
+      - garden peas
+      - gruyere
+      - fusilli
+      - peanut butter
+      - orzo
+      - cannellini beans
+      - tarragon
+      - parsnips
+      - total
+      - tagliatelle
+      - lentils
+      - swede
+      - houmous tub
+      - mayo
+      - herbes de provence
+      - onion powder
+      - paprika
+      - oil
+      - teriyaki marinade
+      - lime
+      - ciabatta
+      - gherkins
+      - bulgur wheat
+      - garlic bulb
+      - fettuccine
+      - brown onion
+      - thai basil
+      - cajun
+      - chipolatas
+      - malted drink
+      - method
+      - pecans
+      - galangal
+      - bay leaf
+      - eggs yolks
+      - puff pastry sheets
+      - water
+      - mixed salad
+      - raw beetroots
+      - crumpets
+      - sultanas
+      - salami
+      - Almond Meal
+      - Almonds
+      - Amaranth
+      - Apples
+      - Apricots
+      - Avocados
+      - Bananas
+      - Barley
+      - Beef
+      - Beef Chuck
+      - Beef Ribs
+      - Beef Tenderloin
+      - Brisket
+      - Brown Rice
+      - Buckwheat
+      - Bulgur
+      - Cheese
+      - Cherries
+      - Chia Seeds
+      - Chicken
+      - Chicken Breasts
+      - Chicken Legs
+      - Chicken Thighs
+      - Chicken Wings
+      - Chocolate
+      - Coconut
+      - Corn Flour
+      - Cornish Hens
+      - Cornmeal
+      - Duck
+      - Fish
+      - Flax Seeds
+      - Goat
+      - Ground Beef
+      - Ground Chicken
+      - Ground Pork
+      - Ground Turkey
+      - Lamb
+      - Mangos
+      - Millet
+      - Mushroom
+      - Nectarines
+      - Oat Flour
+      - Oats
+      - Peaches
+      - Peanuts
+      - Pears
+      - Pineapples
+      - Plums
+      - Pomegranates
+      - Pork
+      - Pork Ribs
+      - Pork Shoulder
+      - Pork Tenderloin
+      - Prime Rib
+      - Quinoa
+      - Sausage
+      - Seafood
+      - Shellfish
+      - Sirloin
+      - Spelt
+      - Steak
+      - Tapioca Flour
+      - Turkey
+      - Veal
+      - Venison
+      - White Rice Flour
+      - Wild Game
+      - Wild Rice
