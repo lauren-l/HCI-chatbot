@@ -32,6 +32,7 @@ nlu:
     - see you later
     - thanks, goodbye
     - Thank you!
+    - thank you!
 - intent: affirm
   examples: |
     - yes
@@ -103,19 +104,25 @@ nlu:
     - I'm interested in a recipe
     - i want to find a recipe
     - I need a recipe
+    - I want a recipe
 - intent: inform
   examples: |
     - i have [avocados](ingredients), [chicken](ingredients), [basil](ingredients) and [bread](ingredients)
-    - [salt](ingredients), [lettuce](ingredients), [potatoes](ingredients), [rice](ingredients)
+    - [salt](ingredients), [tofu](ingredients), [potatoes](ingredients), [rice](ingredients)
     - [pasta](ingredients) [cheese](ingredients) [carrots](ingredients) [peas](ingredients)
     - [no](diet_type)
     - I follow [no](diet_type) diet
-    - i'm a [vegetarian](diet_type)
+    - i'm a [kosher](diet_type)
     - i follow a [vegan](diet_type) diet
-    - give me [carnivore](diet_type) recipes
+    - give me [paleo](diet_type) recipes
     - I'm a [vegetarian](diet_type) and I have [beans](ingredients) and [eggplant](ingredients)
-    - I have [chicken](diet_type) and I follow [no](diet_type) diet
+    - I have [beef](diet_type) and I follow [high-protein](diet_type) diet
     - I have [cheese](ingredients) and [tomatoes](ingredients)
-    - I am [vegetarian](diet_type)
+    - I am [pescatarian](diet_type)
     - I have [tomatoes](ingredients) and [rice](ingredients)
-    - I am [vegetarian](diet_type)
+    - I am [keto](diet_type)
+    - I have broccoli and tofu
+    - I have [potatoes](ingredients) and [peas](ingredients)
+    - I follow a [keto](diet_type) diet
+    - I have [pork](ingredients) and [curry](ingredients)
+    - I follow [no](diet_type) diet
