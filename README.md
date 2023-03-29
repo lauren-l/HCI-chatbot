@@ -45,7 +45,8 @@ npm install --global yarn
 
 ### Running the chatbot
 First, clone the repository.
-Then, open three terminal windows and activate rasa_env in both
+Then, open three terminal windows and activate rasa_env in all of them
+
 In one window, run the action server:
 ```bash
 rasa run actions
