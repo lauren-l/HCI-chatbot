@@ -152,6 +152,7 @@ nlu:
       - mustard
       - oil
       - onion
+      - onions
       - pesto
       - relish
       - remoulade
@@ -260,6 +261,7 @@ nlu:
       - rice noodles
       - quinoa
       - tomatoes
+      - tomato
       - brioche
       - cod
       - carrot

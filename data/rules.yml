@@ -12,6 +12,60 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
+- rule: ask if the user wants to continue after recipe search
+  steps:
+  - action: action_recipe_search
+  - action: utter_ask_new
+
+- rule: ask if the user wants to continue after recipe ingredients search
+  steps:
+  - action: action_recipe_ingredients_search
+  - action: utter_ask_new
+
+- rule: Reset slots anytime user starts a new query
+  steps:
+  - action: utter_ask_new
+  - intent: affirm
+  - action: action_clear_slots
+  - action: utter_help
+
+- rule: say goodbye when user does not want to make new search
+  steps:
+  - action: utter_ask_new
+  - intent: deny
+  - action: utter_goodbye
+
+- rule: Activate Recipe Form (ingredients)
+  steps:
+  - intent: find_recipe_ingredients
+  - action: recipe_form_ingredients
+  - active_loop: recipe_form_ingredients
+
+- rule: Submit Recipe Form (ingredients)
+  condition:
+  - active_loop: recipe_form_ingredients
+  steps:
+  - action: recipe_form_ingredients
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_utter_recipe_ingredients_slots
+  - action: utter_submit
+  - action: action_recipe_ingredients_search
+  - action: utter_ask_new
+
+- rule: Interruption in Recipe Form (ingredients)
+  condition:
+  # Condition that form is active.
+  - active_loop: recipe_form_ingredients
+  steps:
+  # This unhappy path handles the case of an intent `bot_challenge`.
+  - intent: bot_challenge
+  - action: utter_iamabot
+  # Return to form after handling the `bot_challenge` intent
+  - action: recipe_form_ingredients
+  - active_loop: recipe_form_ingredients
+
 - rule: Activate Recipe Form
   steps:
   - intent: find_recipe
@@ -26,9 +80,10 @@ rules:
   - active_loop: null
   - slot_was_set:
     - requested_slot: null
-  - action: utter_submit
   - action: action_utter_recipe_slots
+  - action: utter_submit
   - action: action_recipe_search
+  - action: utter_ask_new
 
 - rule: Interruption in Recipe Form
   condition:

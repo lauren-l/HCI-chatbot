@@ -33,9 +33,9 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: find_recipe
-  - action: recipe_form
-  - active_loop: recipe_form
+  - intent: find_recipe_ingredients
+  - action: recipe_form_ingredients
+  - active_loop: recipe_form_ingredients
   - slot_was_set:
     - requested_slot: ingredients
   - slot_was_set:
@@ -63,10 +63,297 @@ stories:
   - slot_was_set:
     - requested_slot: null
   - active_loop: null
+  - action: action_utter_recipe_ingredients_slots
   - action: utter_submit
-  - action: action_utter_recipe_slots
-  - action: action_recipe_search
+  - action: action_recipe_ingredients_search
+  - action: utter_ask_new
+  - intent: deny
+  - action: utter_goodbye
+
+- story: User interrupts the form and doesn't want to continue
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: find_recipe_ingredients
+  - action: recipe_form_ingredients
+  - active_loop: recipe_form_ingredients
+  - intent: stop
+  - action: utter_ask_continue
+  - or: 
+    - intent: stop
+    - intent: affirm
+  - action: action_deactivate_loop
+  - active_loop: null
+
+- story: interactive_story_2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: find_recipe_ingredients
+  - action: recipe_form_ingredients
+  - active_loop: recipe_form_ingredients
+  - slot_was_set:
+    - requested_slot: ingredients
+  - intent: stop
+  - action: utter_ask_continue
+  - intent: stop
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
   - intent: goodbye
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: find_recipe_ingredients
+  - action: recipe_form_ingredients
+  - active_loop: recipe_form_ingredients
+  - slot_was_set:
+    - requested_slot: ingredients
+  - slot_was_set:
+    - ingredients: s
+  - slot_was_set:
+    - ingredients: s
+  - slot_was_set:
+    - requested_slot: diet_type
+  - intent: stop
+  - action: utter_ask_continue
+  - intent: affirm
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: find_recipe_ingredients
+  - action: recipe_form_ingredients
+  - active_loop: recipe_form_ingredients
+  - slot_was_set:
+    - requested_slot: ingredients
+  - slot_was_set:
+    - ingredients:
+      - cheese
+      - tomatoes
+  - slot_was_set:
+    - ingredients:
+      - cheese
+      - tomatoes
+  - slot_was_set:
+    - requested_slot: diet_type
+  - slot_was_set:
+    - diet_type: vegetarian
+  - slot_was_set:
+    - diet_type: vegetarian
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_utter_recipe_ingredients_slots
+  - action: utter_submit
+  - action: action_recipe_ingredients_search
+  - action: utter_ask_new
+  - intent: deny
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: find_recipe_ingredients
+  - action: recipe_form_ingredients
+  - active_loop: recipe_form_ingredients
+  - slot_was_set:
+    - requested_slot: ingredients
+  - slot_was_set:
+    - ingredients:
+      - tomatoes
+      - rice
+  - slot_was_set:
+    - ingredients:
+      - tomatoes
+      - rice
+  - slot_was_set:
+    - requested_slot: diet_type
+  - slot_was_set:
+    - diet_type: vegetarian
+  - slot_was_set:
+    - diet_type: vegetarian
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_utter_recipe_ingredients_slots
+  - action: utter_submit
+  - action: action_recipe_ingredients_search
+  - action: utter_ask_new
+  - intent: deny
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: find_recipe_ingredients
+  - action: recipe_form_ingredients
+  - active_loop: recipe_form_ingredients
+  - slot_was_set:
+    - requested_slot: ingredients
+  - slot_was_set:
+    - ingredients:
+      - potatoes
+      - peas
+  - slot_was_set:
+    - ingredients:
+      - potatoes
+      - peas
+  - slot_was_set:
+    - requested_slot: diet_type
+  - slot_was_set:
+    - diet_type: keto
+  - slot_was_set:
+    - diet_type: keto
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_utter_recipe_ingredients_slots
+  - action: utter_submit
+  - action: action_recipe_ingredients_search
+  - action: utter_ask_new
+  - intent: deny
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: find_recipe_ingredients
+  - action: recipe_form_ingredients
+  - active_loop: recipe_form_ingredients
+  - slot_was_set:
+    - requested_slot: ingredients
+  - slot_was_set:
+    - ingredients:
+      - pork
+      - curry
+  - slot_was_set:
+    - ingredients:
+      - pork
+      - curry
+  - slot_was_set:
+    - requested_slot: diet_type
+  - slot_was_set:
+    - diet_type: no
+  - slot_was_set:
+    - diet_type: no
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_utter_recipe_ingredients_slots
+  - action: utter_submit
+  - action: action_recipe_ingredients_search
+  - action: utter_ask_new
+  - intent: deny
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: find_recipe_ingredients
+  - action: recipe_form_ingredients
+  - active_loop: recipe_form_ingredients
+  - slot_was_set:
+    - requested_slot: ingredients
+  - slot_was_set:
+    - ingredients:
+      - tofu
+      - carrots
+  - slot_was_set:
+    - diet_type: no
+  - slot_was_set:
+    - diet_type: no
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_utter_recipe_ingredients_slots
+  - action: utter_submit
+  - action: action_recipe_ingredients_search
+  - action: utter_ask_new
+  - intent: deny
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: find_recipe_ingredients
+  - action: recipe_form_ingredients
+  - active_loop: recipe_form_ingredients
+  - slot_was_set:
+    - requested_slot: ingredients
+  - slot_was_set:
+    - ingredients:
+      - peaches
+      - pears
+  - slot_was_set:
+    - ingredients:
+      - peaches
+      - pears
+  - slot_was_set:
+    - requested_slot: diet_type
+  - slot_was_set:
+    - diet_type: vegetarian
+  - slot_was_set:
+    - diet_type: vegetarian
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_utter_recipe_ingredients_slots
+  - action: utter_submit
+  - action: action_recipe_ingredients_search
+  - action: utter_ask_new
+  - intent: deny
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: find_recipe
+  - action: recipe_form
+  - active_loop: recipe_form
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - diet_type: ccurry
+  - slot_was_set:
+    - diet_type: null
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: currry
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: curry
+  - slot_was_set:
+    - recipe: curry
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_utter_recipe_slots
+  - action: utter_submit
+  - action: action_recipe_search
+  - action: utter_ask_new
+  - intent: deny
   - action: utter_goodbye
 
 - story: User interrupts the form and doesn't want to continue
@@ -92,7 +379,7 @@ stories:
   - action: recipe_form
   - active_loop: recipe_form
   - slot_was_set:
-    - requested_slot: ingredients
+    - requested_slot: recipe
   - intent: stop
   - action: utter_ask_continue
   - intent: stop
@@ -111,149 +398,75 @@ stories:
   - action: recipe_form
   - active_loop: recipe_form
   - slot_was_set:
-    - requested_slot: ingredients
+    - requested_slot: recipe
   - slot_was_set:
-    - ingredients: s
-  - slot_was_set:
-    - ingredients: s
-  - slot_was_set:
-    - requested_slot: diet_type
-  - intent: stop
-  - action: utter_ask_continue
-  - intent: affirm
-  - action: action_deactivate_loop
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
-  - intent: goodbye
-  - action: utter_goodbye
-
-- story: interactive_story_1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: find_recipe
-  - action: recipe_form
-  - active_loop: recipe_form
-  - slot_was_set:
-    - requested_slot: ingredients
-  - slot_was_set:
-    - ingredients:
-      - cheese
-      - tomatoes
-  - slot_was_set:
-    - ingredients:
-      - cheese
-      - tomatoes
-  - slot_was_set:
-    - requested_slot: diet_type
-  - slot_was_set:
-    - diet_type: vegetarian
-  - slot_was_set:
-    - diet_type: vegetarian
+    - recipe: curry
   - slot_was_set:
     - requested_slot: null
   - active_loop: null
-  - action: utter_submit
   - action: action_utter_recipe_slots
-  - action: action_recipe_search
-  - intent: goodbye
-  - action: utter_goodbye
-
-- story: interactive_story_1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: find_recipe
-  - action: recipe_form
-  - active_loop: recipe_form
-  - slot_was_set:
-    - requested_slot: ingredients
-  - slot_was_set:
-    - ingredients:
-      - tomatoes
-      - rice
-  - slot_was_set:
-    - ingredients:
-      - tomatoes
-      - rice
-  - slot_was_set:
-    - requested_slot: diet_type
-  - slot_was_set:
-    - diet_type: vegetarian
-  - slot_was_set:
-    - diet_type: vegetarian
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
   - action: utter_submit
-  - action: action_utter_recipe_slots
   - action: action_recipe_search
-  - intent: goodbye
+  - action: utter_ask_new
+  - intent: deny
   - action: utter_goodbye
 
 - story: interactive_story_1
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: find_recipe
-  - action: recipe_form
-  - active_loop: recipe_form
+  - intent: find_recipe_ingredients
+  - action: recipe_form_ingredients
+  - active_loop: recipe_form_ingredients
   - slot_was_set:
     - requested_slot: ingredients
   - slot_was_set:
     - ingredients:
-      - potatoes
-      - peas
-  - slot_was_set:
-    - ingredients:
-      - potatoes
-      - peas
-  - slot_was_set:
-    - requested_slot: diet_type
-  - slot_was_set:
-    - diet_type: keto
-  - slot_was_set:
-    - diet_type: keto
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
-  - action: utter_submit
-  - action: action_utter_recipe_slots
-  - action: action_recipe_search
-  - intent: goodbye
-  - action: utter_goodbye
-
-- story: interactive_story_1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: find_recipe
-  - action: recipe_form
-  - active_loop: recipe_form
-  - slot_was_set:
-    - requested_slot: ingredients
-  - slot_was_set:
-    - ingredients:
-      - pork
-      - curry
-  - slot_was_set:
-    - ingredients:
-      - pork
-      - curry
+      - bacon
+      - eggs
+      - tomato
+      - onion
   - slot_was_set:
     - requested_slot: diet_type
   - slot_was_set:
     - diet_type: no
   - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_utter_recipe_ingredients_slots
+  - action: utter_submit
+  - action: action_recipe_ingredients_search
+  - action: utter_ask_new
+  - intent: deny
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: find_recipe_ingredients
+  - action: recipe_form_ingredients
+  - active_loop: recipe_form_ingredients
+  - slot_was_set:
+    - requested_slot: ingredients
+  - slot_was_set:
+    - ingredients:
+      - bacon
+      - eggs
+      - tomato
+      - onion
+  - slot_was_set:
+    - requested_slot: diet_type
+  - slot_was_set:
     - diet_type: no
   - slot_was_set:
     - requested_slot: null
   - active_loop: null
+  - action: action_utter_recipe_ingredients_slots
   - action: utter_submit
-  - action: action_utter_recipe_slots
-  - action: action_recipe_search
-  - intent: goodbye
+  - action: action_recipe_ingredients_search
+  - action: utter_ask_new
+  - intent: deny
   - action: utter_goodbye
 
 - story: interactive_story_1
@@ -264,22 +477,49 @@ stories:
   - action: recipe_form
   - active_loop: recipe_form
   - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: curry
+  - slot_was_set:
+    - recipe: curry
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_utter_recipe_slots
+  - action: utter_submit
+  - action: action_recipe_search
+  - action: utter_ask_new
+  - intent: deny
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: find_recipe_ingredients
+  - action: recipe_form_ingredients
+  - active_loop: recipe_form_ingredients
+  - slot_was_set:
     - requested_slot: ingredients
   - slot_was_set:
+    - recipe: carrots
+  - slot_was_set:
     - ingredients:
-      - tofu
+      - chicken
+      - peas
       - carrots
   - slot_was_set:
-    - diet_type: no
+    - requested_slot: diet_type
   - slot_was_set:
-    - diet_type: no
+    - diet_type: keto
   - slot_was_set:
     - requested_slot: null
   - active_loop: null
+  - action: action_utter_recipe_ingredients_slots
   - action: utter_submit
-  - action: action_utter_recipe_slots
-  - action: action_recipe_search
-  - intent: goodbye
+  - action: action_recipe_ingredients_search
+  - action: utter_ask_new
+  - intent: deny
   - action: utter_goodbye
 
 - story: interactive_story_1
@@ -290,26 +530,73 @@ stories:
   - action: recipe_form
   - active_loop: recipe_form
   - slot_was_set:
-    - requested_slot: ingredients
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: gnocchi
   - slot_was_set:
     - ingredients:
-      - peaches
-      - pears
+      - gnocchi
   - slot_was_set:
-    - ingredients:
-      - peaches
-      - pears
-  - slot_was_set:
-    - requested_slot: diet_type
-  - slot_was_set:
-    - diet_type: vegetarian
-  - slot_was_set:
-    - diet_type: vegetarian
+    - recipe: gnocchi
   - slot_was_set:
     - requested_slot: null
   - active_loop: null
-  - action: utter_submit
   - action: action_utter_recipe_slots
+  - action: utter_submit
   - action: action_recipe_search
-  - intent: goodbye
+  - action: utter_ask_new
+  - intent: affirm
+  - action: action_clear_slots
+  - action: utter_help
+  - intent: find_recipe_ingredients
+  - action: recipe_form_ingredients
+  - active_loop: recipe_form_ingredients
+  - slot_was_set:
+    - requested_slot: ingredients
+  - slot_was_set:
+    - recipe: chicken
+  - slot_was_set:
+    - ingredients:
+      - sweet potato
+      - chicken
+  - slot_was_set:
+    - requested_slot: diet_type
+  - slot_was_set:
+    - diet_type: vegan
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_utter_recipe_ingredients_slots
+  - action: utter_submit
+  - action: action_recipe_ingredients_search
+  - action: utter_ask_new
+  - intent: affirm
+  - action: action_clear_slots
+  - action: utter_help
+  - intent: find_recipe_ingredients
+  - action: recipe_form_ingredients
+  - active_loop: recipe_form_ingredients
+  - slot_was_set:
+    - requested_slot: ingredients
+  - slot_was_set:
+    - recipe: chicken
+  - slot_was_set:
+    - ingredients:
+      - chicken
+  - slot_was_set:
+    - requested_slot: diet_type
+  - slot_was_set:
+    - diet_type: vegan
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_utter_recipe_ingredients_slots
+  - action: utter_submit
+  - action: action_recipe_ingredients_search
+  - action: utter_ask_new
+  - intent: deny
+    entities:
+    - diet_type: no
+  - slot_was_set:
+    - diet_type: no
   - action: utter_goodbye
