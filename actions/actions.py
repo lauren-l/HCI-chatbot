@@ -2,6 +2,7 @@ from typing import Text, List, Any, Dict
 
 from rasa_sdk import Tracker, FormValidationAction, Action
 from rasa_sdk.events import EventType
+from rasa_sdk.events import AllSlotsReset
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 
@@ -13,6 +14,18 @@ class ValidateRecipeaForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_recipe_form"
 
+    def validate_recipe(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        """Validate `ingredients` value."""
+
+        dispatcher.utter_message(text=f"OK! You want a recipe for: {slot_value}")
+        return {"recipe": slot_value}
+    
     def validate_ingredients(
         self,
         slot_value: List,
@@ -45,9 +58,9 @@ class ValidateRecipeaForm(FormValidationAction):
         dispatcher.utter_message(text=f"OK! You follow a {diet} diet.")
         return {"diet_type": diet}
 
-class ActionRecipeSearch(Action):
+class ActionRecipeIngredientsSearch(Action):
     def name(self) -> Text:
-        return "action_recipe_search"
+        return "action_recipe_ingredients_search"
     
     def run(
         self,
@@ -63,7 +76,6 @@ class ActionRecipeSearch(Action):
         ingredients = tracker.get_slot("ingredients")
         diet = tracker.get_slot("diet_type")
 
-        message = "Try these recipes:\n" # message for bot to utter
         
         # form query
         if diet == "no":
@@ -72,11 +84,45 @@ class ActionRecipeSearch(Action):
             query = diet + " " + " ".join(ingredients)
 
         # query Edamam API
-        query_result = e.search_recipe(query)['hits']
-        if query_result == None:
-            dispatcher.utter_message(text = "I couldn't find any recipes with the given criteria")
+        query_result = e.search_recipe(query)
+        if query_result['count'] == 0:
+            message = "I couldn't find any recipes with the given criteria"
         else:
-            for i, recipe in enumerate(query_result):
+            message = "Try these recipes:\n" # message for bot to utter
+            for i, recipe in enumerate(query_result['hits']):
+                message += f"Recipe {i+1}: {recipe['recipe']['label']}\n\tlink: {recipe['recipe']['url']}\n"
+                if i == 5:
+                    break
+    
+        dispatcher.utter_message(text = message)
+        
+        return []
+
+class ActionRecipeSearch(Action):
+    def name(self) -> Text:
+        return "action_recipe_search"
+    
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+		domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        """Search for recipe with matching criteria"""
+
+        e = Edamam(recipes_appid="bf39108a", recipes_appkey='411d5b6d03551c704f48d3431162d55e')
+        
+        # get inputted ingredients + diet info from tracker
+        recipe = tracker.get_slot("recipe")
+
+
+        # query Edamam API
+        query =  e.search_recipe(recipe)
+        if query['count'] == 0:
+            message = "I couldn't find any recipes for " + recipe
+        else:
+            message = f"Try these recipes for {recipe}:\n" # message for bot to utter
+            for i, recipe in enumerate(query['hits']):
                 message += f"Recipe {i+1}: {recipe['recipe']['label']}\n\tlink: {recipe['recipe']['url']}\n"
                 if i == 5:
                     break
@@ -86,9 +132,9 @@ class ActionRecipeSearch(Action):
         return []
 
 
-class ActionUtterRecipeSlots(Action):
+class ActionUtterRecipeIngredientsSlots(Action):
     def name(self) -> Text:
-        return "action_utter_recipe_slots"
+        return "action_utter_recipe_ingredients_slots"
     
     def run(
         self,
@@ -112,3 +158,29 @@ class ActionUtterRecipeSlots(Action):
         dispatcher.utter_message(text = message)
         
         return []
+
+class ActionUtterRecipeSlots(Action):
+    def name(self) -> Text:
+        return "action_utter_recipe_slots"
+    
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+		domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        """Confirm recipe slots"""
+        
+        recipe = tracker.get_slot("recipe")
+        message = f"You want a {recipe} recipe"
+    
+        dispatcher.utter_message(text = message)
+        
+        return []
+
+class ResetSlots(Action):
+    def name(self) -> Text:
+        return "action_clear_slots"
+    
+    def run(self, dispatcher, tracker, domain):
+        return [AllSlotsReset()]

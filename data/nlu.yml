@@ -33,6 +33,7 @@ nlu:
     - thanks, goodbye
     - Thank you!
     - thank you!
+    - thank you
 - intent: affirm
   examples: |
     - yes
@@ -51,6 +52,8 @@ nlu:
     - don't like that
     - no way
     - not really
+    - [no](diet_type)
+    - [no](diet_type) way
 - intent: mood_great
   examples: |
     - perfect
@@ -105,11 +108,28 @@ nlu:
     - i want to find a recipe
     - I need a recipe
     - I want a recipe
+    - [soup](recipe)
+    - [chicken](recipe)
+    - [pasta](recipe)
+    - [bread](recipe)
+    - I want a [gnocchi](ingredients) recipe
+- intent: find_recipe_ingredients
+  examples: |
+    - i need a recipe with specific ingredients
+    - i want a recipe with certain ingredients
+    - can you find me a recipe with specific ingredients
+    - I'm interested in a recipe with certain ingredients
+    - i want to find a recipe with ingredients
+    - Can you find me a recipe with specific ingredients?
+    - can you fine me a recipe with specific ingredients
+    - I want a recipe with specific ingredients
 - intent: inform
   examples: |
     - i have [avocados](ingredients), [chicken](ingredients), [basil](ingredients) and [bread](ingredients)
+    - i have [avocados](ingredients) [chicken](ingredients) [basil](ingredients) and [bread](ingredients)
     - [salt](ingredients), [tofu](ingredients), [potatoes](ingredients), [rice](ingredients)
     - [pasta](ingredients) [cheese](ingredients) [carrots](ingredients) [peas](ingredients)
+    - [pasta](ingredients) [cheese](ingredients) [carrots](ingredients) and [peas](ingredients)
     - [no](diet_type)
     - I follow [no](diet_type) diet
     - i'm a [kosher](diet_type)
@@ -121,7 +141,7 @@ nlu:
     - I am [pescatarian](diet_type)
     - I have [tomatoes](ingredients) and [rice](ingredients)
     - I am [keto](diet_type)
-    - I have broccoli and tofu
+    - I have [broccoli](ingredients) and [tofu](ingredients)
     - I have [potatoes](ingredients) and [peas](ingredients)
     - I follow a [keto](diet_type) diet
     - I have [pork](ingredients) and [curry](ingredients)
@@ -129,3 +149,14 @@ nlu:
     - I have chickpeas and [bread](ingredients)
     - I have [peaches](ingredients) and [pears](ingredients)
     - I am a [vegetarian](diet_type)
+    - I want a [pizza](recipe) recipe
+    - I want a recipe for [potatoes](recipe)
+    - I want a [hamburger](recipe)
+    - I want a recipe for [curry](ingredients)
+    - I have [bacon][{"entity": "ingredients"}, {"entity": "ingredients"}] [eggs][{"entity": "ingredients"}, {"entity": "ingredients"}] [tomato](ingredients) and [onion][{"entity": "ingredients"}, {"entity": "ingredients"}]
+    - [no](diet_type) diet
+    - I have [bacon](ingredients) [eggs](ingredients) [tomato](ingredients) and [onion](ingredients)
+    - I have [chicken](ingredients) [peas](ingredients) and [carrots](ingredients)
+    - I have [sweet potato](ingredients) and [chicken](ingredients)
+    - I am [vegan](diet_type)
+    - I have [chicken](ingredients)

@@ -7,6 +7,7 @@ intents:
 - bot_challenge
 - deny
 - find_recipe
+- find_recipe_ingredients
 - goodbye
 - greet
 - inform
@@ -18,6 +19,12 @@ entities:
 - diet_type
 - ingredients
 slots:
+  recipe:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: ingredients
   ingredients:
     type: list
     influence_conversation: true
@@ -31,18 +38,24 @@ slots:
     - type: from_entity
       entity: diet_type
 forms:
-  recipe_form:
+  recipe_form_ingredients:
     required_slots:
     - ingredients
     - diet_type
+  recipe_form:
+    required_slots:
+    - recipe
 responses:
   utter_greet:
-  - text: Hi, I’m Remy the recipe chatbot. Ask me for a recipe and go from there!
+  - image: ./images/remy.jpeg
+    text: Hi, I’m Remy the recipe chatbot! Tell me "I need a recipe" to find a recipe by name or ask me "can you find me a recipe with specific ingredients" to find recipes with specific ingredients
   utter_cheer_up:
   - image: https://i.imgur.com/nGF1K8f.jpg
     text: 'Here is something to cheer you up:'
   utter_did_that_help:
   - text: Did that help you?
+  utter_help:
+  - text: How can I help you?
   utter_happy:
   - text: Great, carry on!
   utter_goodbye:
@@ -57,11 +70,20 @@ responses:
   - text: What ingredients do you have?
   utter_ask_diet_type:
   - text: What diet do you follow?
+  utter_ask_recipe:
+  - text: What dish would you like a recipe for?
+  utter_ask_new:
+  - text: Would you like to conduct a new search?
 actions:
+- utter_greet
+- utter_help
+- utter_ask_new
+- action_utter_recipe_slots
+- action_clear_slots
 - action_recipe_search
+- action_recipe_ingredients_search
 - utter_goodbye
 - utter_submit
-- action_utter_recipe_slots
-- utter_greet
+- action_utter_recipe_ingredients_slots
 - utter_ask_continue
 - validate_recipe_form
